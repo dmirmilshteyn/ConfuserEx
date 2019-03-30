@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Assembly Settings">
-    <TargetFrameworks>net20;net40;netstandard2.0;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net40;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>Confuser.Runtime</RootNamespace>
   </PropertyGroup>
@@ -16,10 +16,6 @@
     <Compile Include="..\antinet\antinet\*.cs">
       <Link>antinet\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net20'">
-    <DefineConstant Include="NET20" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">

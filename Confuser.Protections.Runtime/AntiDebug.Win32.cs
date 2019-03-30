@@ -64,12 +64,10 @@ namespace Confuser.Runtime {
 
 				;
 
-#if !NET20
 				// OutputDebugString
 				OutputDebugString("");
 				if (Marshal.GetLastWin32Error() == 0)
 					Environment.FailFast(OutputDebugStringMsg);
-#endif
 
 				// CloseHandle
 				try {
