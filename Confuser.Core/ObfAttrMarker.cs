@@ -244,6 +244,8 @@ namespace Confuser.Core {
 					continue;
 				}
 
+				var resolver = context.Resolver;
+
 				var modDef = module.Resolve(proj.BaseDirectory, context.Resolver.DefaultModuleContext);
 				foreach (var method in modDef.FindDefinitions().OfType<MethodDef>()) {
 					logger.LogTrace("Loading custom debug infos for '{0}'.", method);
@@ -256,7 +258,10 @@ namespace Confuser.Core {
 
 				token.ThrowIfCancellationRequested();
 
-				context.Resolver.AddToCache(modDef);
+				if (!context.Resolver.AddToCache(modDef)) {
+					context.Resolver.Remove(modDef);
+					context.Resolver.AddToCache(modDef);
+				}
 				modules.Add((module, modDef));
 			}
 
