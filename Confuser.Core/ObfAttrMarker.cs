@@ -244,8 +244,6 @@ namespace Confuser.Core {
 					continue;
 				}
 
-				var resolver = context.Resolver;
-
 				var modDef = module.Resolve(proj.BaseDirectory, context.Resolver.DefaultModuleContext);
 				foreach (var method in modDef.FindDefinitions().OfType<MethodDef>()) {
 					logger.LogTrace("Loading custom debug infos for '{0}'.", method);
